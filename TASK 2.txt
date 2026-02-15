@@ -1,0 +1,50 @@
+import java.util.Scanner;
+
+class Item {
+    public String itemName;
+    public int itemID;
+    private double price;
+    private int stock;
+
+    public Item(String name, int id) {
+        itemName = name;
+        itemID = id;
+    }
+
+    public void setPrice(double p) {
+        if (p >= 0) {
+            price = p;
+        }
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setStock(int s) {
+        if (s >= 0) {
+            stock = s;
+        }
+    }
+
+    public int getStock() {
+        return stock;
+    }
+
+    public void decreaseStock(int qty) {
+        stock = stock - qty;
+    }
+}
+
+public class ShopProgram {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        Item item1 = new Item("Biscuits", 101);
+        item1.setPrice(50);
+        item1.setStock(20);
+
+        Item item2 = new Item("Juice", 102);
+        i

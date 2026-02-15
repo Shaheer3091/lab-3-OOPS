@@ -1,0 +1,73 @@
+class Student {
+
+    private int id;
+    private String studentName;
+    private double score;
+
+    public Student(int id, String studentName, double score) {
+        this.id = id;
+        this.studentName = studentName;
+        this.score = score;
+    }
+
+    public void setScore(double score) {
+        this.score = score;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getStudentName() {
+        return studentName;
+    }
+
+    public double getScore() {
+        return score;
+    }
+
+    public String findGrade() {
+        String grade;
+
+        if (score >= 85) {
+            grade = "A";
+        } else if (score >= 70) {
+            grade = "B";
+        } else if (score >= 55) {
+            grade = "C";
+        } else if (score >= 40) {
+            grade = "D";
+        } else {
+            grade = "F";
+        }
+
+        return grade;
+    }
+
+    public void showInfo() {
+        System.out.println("Student ID: " + id);
+        System.out.println("Student Name: " + studentName);
+        System.out.println("Marks: " + score);
+        System.out.println("Grade: " + findGrade());
+        System.out.println();
+    }
+}
+
+public class SchoolApp {
+    public static void main(String[] args) {
+
+        Student st1 = new Student(201, "Ali", 80);
+        Student st2 = new Student(202, "Sara", 65);
+        Student st3 = new Student(203, "Ahmed", 50);
+
+        st1.setScore(88);
+        st2.setScore(72);
+        st3.setScore(58);
+
+        Student[] list = {st1, st2, st3};
+
+        for (int i = 0; i < list.length; i++) {
+            list[i].showInfo();
+        }
+    }
+}
