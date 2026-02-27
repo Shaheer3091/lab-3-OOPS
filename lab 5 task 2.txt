@@ -1,0 +1,50 @@
+class Laptop {
+
+    String brand;
+    int ramSize;
+    int batteryCapacity;
+
+    Laptop(String brand, int ramSize, int batteryCapacity) {
+        this.brand = brand;
+        this.ramSize = ramSize;
+        this.batteryCapacity = batteryCapacity;
+    }
+
+    double calculateBatteryBackup() {
+        return (double) batteryCapacity / (ramSize * 500);
+    }
+}
+
+class Student {
+
+    int studentId;
+    String name;
+    Laptop laptop;
+
+    Student(int studentId, String name, String brand, int ramSize, int batteryCapacity) {
+        this.studentId = studentId;
+        this.name = name;
+        laptop = new Laptop(brand, ramSize, batteryCapacity);
+    }
+
+    void displayInfo() {
+        System.out.println("Student ID: " + studentId);
+        System.out.println("Name: " + name);
+        System.out.println("Laptop Brand: " + laptop.brand);
+        System.out.println("RAM Size: " + laptop.ramSize + " GB");
+        System.out.println("Battery Capacity: " + laptop.batteryCapacity + " mAh");
+        System.out.println("Estimated Battery Backup: " + laptop.calculateBatteryBackup() + " hours");
+        System.out.println();
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+
+        Student s1 = new Student(201, "sami", "HP", 8, 4000);
+        Student s2 = new Student(202, "owais", "Dell", 16, 6000);
+
+        s1.displayInfo();
+        s2.displayInfo();
+    }
+}

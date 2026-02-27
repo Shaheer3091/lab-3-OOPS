@@ -1,0 +1,59 @@
+class Device {
+
+    int id;
+    double pwr;
+    double hrs;
+
+    Device(int id, double pwr, double hrs) {
+        this.id = id;
+        this.pwr = pwr;
+        this.hrs = hrs;
+    }
+
+    double calc() {
+        return pwr * hrs;
+    }
+}
+
+class Room {
+
+    String name;
+    Device d;
+
+    Room(String name, int id, double pwr, double hrs) {
+        this.name = name;
+        d = new Device(id, pwr, hrs);
+    }
+
+    double getUse() {
+        return d.calc();
+    }
+}
+
+class House {
+
+    int id;
+    String owner;
+    Room r;
+
+    House(int id, String owner, String rName, int dId, double pwr, double hrs) {
+        this.id = id;
+        this.owner = owner;
+        r = new Room(rName, dId, pwr, hrs);
+    }
+
+    double total() {
+        return r.getUse();
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+
+        House h = new House(1, "Ali", "Hall", 10, 800, 6);
+
+        System.out.println("House ID: " + h.id);
+        System.out.println("Owner: " + h.owner);
+        System.out.println("Daily Usage: " + h.total() + " watts per day");
+    }
+}

@@ -1,0 +1,89 @@
+class Student {
+
+    int studentId;
+    String studentName;
+    double marks;
+
+    Student(int studentId, String studentName, double marks) {
+        this.studentId = studentId;
+        this.studentName = studentName;
+        this.marks = marks;
+    }
+
+    void displayStudentDetails() {
+        System.out.println("ID: " + studentId);
+        System.out.println("Name: " + studentName);
+        System.out.println("Marks: " + marks);
+    }
+
+    boolean isPassed() {
+        if (marks >= 40) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+}
+
+class College {
+
+    String collegeName;
+    String cityName;
+    Student[] students;
+
+    College(String collegeName, String cityName, Student[] students) {
+        this.collegeName = collegeName;
+        this.cityName = cityName;
+        this.students = students;
+    }
+
+    void displayCollegeDetails() {
+
+        System.out.println("College: " + collegeName);
+        System.out.println("City: " + cityName);
+        System.out.println();
+
+        int totalStudents = students.length;
+        int passedCount = 0;
+        int failedCount = 0;
+        double totalMarks = 0;
+
+        for (int i = 0; i < students.length; i++) {
+
+            students[i].displayStudentDetails();
+            System.out.println();
+
+            totalMarks = totalMarks + students[i].marks;
+
+            if (students[i].isPassed()) {
+                passedCount++;
+            } else {
+                failedCount++;
+            }
+        }
+
+        double averageMarks = totalMarks / totalStudents;
+
+        System.out.println("Total Students: " + totalStudents);
+        System.out.println("Passed: " + passedCount);
+        System.out.println("Failed: " + failedCount);
+        System.out.println("Average Marks: " + averageMarks);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+
+        Student s1 = new Student(101, "Zayan", 78);
+        Student s2 = new Student(102, "Maham", 33);
+        Student s3 = new Student(103, "Rayyan", 65);
+        Student s4 = new Student(104, "Areeba", 49);
+        Student s5 = new Student(105, "Danish", 28);
+
+        Student[] studentArray = {s1, s2, s3, s4, s5};
+
+        College college = new College("Alpha College", "Karachi", studentArray);
+
+        college.displayCollegeDetails();
+    }
+}

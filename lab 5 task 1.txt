@@ -1,0 +1,38 @@
+class Student {
+
+    static int totalStudents = 0;
+
+    int studentId;
+    String studentName;
+
+    Student(int id, String name) {
+        studentId = id;
+        studentName = name;
+        totalStudents++;
+    }
+
+    void showStudent() {
+        System.out.println("Student ID: " + studentId);
+        System.out.println("Student Name: " + studentName);
+        System.out.println();
+    }
+
+    static void showTotalStudents() {
+        System.out.println("Total Students: " + totalStudents);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+
+        Student s1 = new Student(101, "Ali");
+        Student s2 = new Student(102, "Ahmed");
+        Student s3 = new Student(103, "Sara");
+
+        s1.showStudent();
+        s2.showStudent();
+        s3.showStudent();
+
+        Student.showTotalStudents();
+    }
+}
